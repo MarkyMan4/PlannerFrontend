@@ -53,10 +53,16 @@ export default {
     },
     methods: {
     checkForm() {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
       const headers = {
           'Authorization': 'Token ' + this.token
       }
-      axios.post('https://planner-backend-api.herokuapp.com/api/projects/', {
+      axios.post(baseUrl + 'api/projects/', {
           name: this.name,
           start_date: this.start,
           end_date: this.end
@@ -65,7 +71,7 @@ export default {
           headers: headers
       })
       .then(res => {
-          
+
       })
       .catch(res => (console.log(res)));
     }

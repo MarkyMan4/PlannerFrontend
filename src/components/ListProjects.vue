@@ -41,7 +41,13 @@ export default {
   },
   methods: {
     getProjects() {
-      axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+      
+      axios.get(baseUrl + "api/projects/", {
         params: {
           active: "true"
         },
@@ -55,9 +61,15 @@ export default {
       .catch(err => console.log(err));
     },
     projectDetails(proj) {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
       this.projDetail = proj;
 
-      axios.get("https://planner-backend-api.herokuapp.com/api/people-on-projects/", {
+      axios.get(baseUrl + "api/people-on-projects/", {
         params: {
           proj_id: proj.id
         },

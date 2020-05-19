@@ -31,7 +31,13 @@ export default {
     },
     methods: {
       getProjects() {
-        axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
+        axios.get(baseUrl + "api/projects/", {
           headers: {
             'Authorization': 'Token ' + this.token
           }

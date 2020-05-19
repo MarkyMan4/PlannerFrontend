@@ -42,11 +42,17 @@ export default {
   },
   methods: {
       deactivateProject(projDetail) {
+          var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+          if(window.location.hostname == "localhost") {
+            baseUrl = "http://localhost:8000/";
+          }
+
           const headers = {
             'Authorization': 'Token ' + this.token
           }
 
-          axios.post("https://planner-backend-api.herokuapp.com/api/projects/" + this.projDetail.id + "/deactivate/", {}, {
+          axios.post(baseUrl + "api/projects/" + this.projDetail.id + "/deactivate/", {}, {
               headers: headers
           })
           .then(res => {

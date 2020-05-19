@@ -48,7 +48,13 @@ export default {
     },
     methods: {
     login() {
-      axios.post('https://planner-backend-api.herokuapp.com/auth/', {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
+      axios.post(baseUrl + 'auth/', {
           username: this.uname,
           password: this.pword
       })

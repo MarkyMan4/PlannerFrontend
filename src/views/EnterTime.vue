@@ -52,10 +52,16 @@ export default {
   },
   methods: {
     checkForm() {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
       const headers = {
           'Authorization': 'Token ' + this.token
       }
-      axios.post('https://planner-backend-api.herokuapp.com/api/projects/' + this.projId + '/allocate_time/', {
+      axios.post(baseUrl + 'api/projects/' + this.projId + '/allocate_time/', {
           project: this.projId,
           percent_allocated: this.percent
       },
@@ -66,7 +72,13 @@ export default {
       .catch(res => (console.log(res)));
     },
     getProjects() {
-      axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
+      var baseUrl = "https://planner-backend-api.herokuapp.com/";
+
+      if(window.location.hostname == "localhost") {
+        baseUrl = "http://localhost:8000/";
+      }
+
+      axios.get(baseUrl + "api/projects/", {
         params: {
           active: "true"
         },
