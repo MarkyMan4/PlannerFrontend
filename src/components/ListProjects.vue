@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     getProjects() {
-      axios.get("http://localhost:8000/api/projects/", {
+      axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
         params: {
           active: "true"
         },
@@ -57,7 +57,7 @@ export default {
     projectDetails(proj) {
       this.projDetail = proj;
 
-      axios.get("http://localhost:8000/api/people-on-projects/", {
+      axios.get("https://planner-backend-api.herokuapp.com/api/people-on-projects/", {
         params: {
           proj_id: proj.id
         },

@@ -31,18 +31,18 @@ export default {
     },
     methods: {
       getProjects() {
-        axios.get("http://localhost:8000/api/projects/", {
+        axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
           headers: {
             'Authorization': 'Token ' + this.token
           }
         })
         .then(res => {
           this.projects = res.data;
-          console.log(this.projects);
+          // console.log(this.projects);
 
           for(var i = 0; i < this.projects.length; i++) {
             this.graphData.push([this.projects[i].name, this.projects[i].start_date, this.projects[i].end_date]);
-            console.log(this.graphData);
+            // console.log(this.graphData);
           }
         })
         .catch(err => console.log(err));
@@ -50,7 +50,6 @@ export default {
     },
     created() {
       this.getProjects();
-      console.log(this.projects);
     }
 }
 </script>

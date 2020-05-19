@@ -56,7 +56,7 @@ export default {
       const headers = {
           'Authorization': 'Token ' + this.token
       }
-      axios.post('http://localhost:8000/api/projects/', {
+      axios.post('https://planner-backend-api.herokuapp.com/api/projects/', {
           name: this.name,
           start_date: this.start,
           end_date: this.end
@@ -64,7 +64,9 @@ export default {
       {
           headers: headers
       })
-      .then(res => (console.log(res.data)))
+      .then(res => {
+          
+      })
       .catch(res => (console.log(res)));
     }
   },

@@ -48,13 +48,13 @@ export default {
     },
     methods: {
     login() {
-      axios.post('http://localhost:8000/auth/', {
+      axios.post('https://planner-backend-api.herokuapp.com/auth/', {
           username: this.uname,
           password: this.pword
       })
       .then(res => {
           this.token = res.data.token;
-          console.log(this.token);
+        //   console.log(this.token);
           localStorage.setItem('user-token', res.data.token);
           this.$router.push({ path : '/' });
           window.location.reload(true);

@@ -55,7 +55,7 @@ export default {
       const headers = {
           'Authorization': 'Token ' + this.token
       }
-      axios.post('http://localhost:8000/api/projects/' + this.projId + '/allocate_time/', {
+      axios.post('https://planner-backend-api.herokuapp.com/api/projects/' + this.projId + '/allocate_time/', {
           project: this.projId,
           percent_allocated: this.percent
       },
@@ -66,7 +66,7 @@ export default {
       .catch(res => (console.log(res)));
     },
     getProjects() {
-      axios.get("http://localhost:8000/api/projects/", {
+      axios.get("https://planner-backend-api.herokuapp.com/api/projects/", {
         params: {
           active: "true"
         },

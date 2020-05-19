@@ -46,7 +46,7 @@ export default {
             'Authorization': 'Token ' + this.token
           }
 
-          axios.post("http://localhost:8000/api/projects/" + this.projDetail.id + "/deactivate/", {}, {
+          axios.post("https://planner-backend-api.herokuapp.com/api/projects/" + this.projDetail.id + "/deactivate/", {}, {
               headers: headers
           })
           .then(res => {
