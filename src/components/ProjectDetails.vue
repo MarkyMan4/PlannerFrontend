@@ -2,6 +2,8 @@
   <div v-if="projDetail != null">
       <h3>{{ projDetail.name }}</h3>
       <hr>
+      <h5><b>Description</b></h5>
+      <p>{{ projDetail.description }}</p>
       <h5><b>Start Date</b></h5>
       <p>{{ projDetail.start_date }}</p>
       <h5><b>End Date</b></h5>

@@ -7,8 +7,11 @@
             <div class="card mt-5">
                 <div class="card-body">
                     <form id="timeForm" @submit.prevent="checkForm">
+                      <div class="text-left">
                         <p>
-                          <label class="mr-2" for="name">Project</label>
+                          <label class="mb-0" for="name"><b>Project</b></label>
+                        </p>
+                        <p class="mb-4">
                           <select required name="project" id="project" v-model="projId">
                             <option v-for="proj in projects" :key="proj.id" :value="proj.id">
                               {{ proj.name }}
@@ -16,9 +19,12 @@
                           </select>
                         </p>
                         <p>
-                          <label class="mr-2" for="percent">Percent of Time</label>
-                          <input required type="number" id="percent" v-model="percent">
+                          <label class="mb-0" for="percent"><b>Percent of Time</b></label>
                         </p>
+                        <p>
+                          <input required type="number" id="percent" v-model="percent" placeholder="percent of time">
+                        </p>
+                      </div>
                         <p>
                           <input class="btn btn-outline-success mt-4" type="submit" value="Submit">
                         </p>
@@ -47,7 +53,7 @@ export default {
           token: localStorage.getItem('user-token'),
           projects : [],
           projId: null,
-          percent: 0
+          percent: null
       }
   },
   methods: {
@@ -68,7 +74,10 @@ export default {
       {
           headers: headers
       })
-      .then(res => (console.log(res.data)))
+      .then(res => {
+        this.projId = null;
+        this.percent = null;
+      })
       .catch(res => (console.log(res)));
     },
     getProjects() {
@@ -86,7 +95,9 @@ export default {
           'Authorization': 'Token ' + this.token
         }
       })
-      .then(res => (this.projects = res.data))
+      .then(res => {
+        this.projects = res.data;
+      })
       .catch(err => console.log(err));
     }
   },

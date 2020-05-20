@@ -7,18 +7,32 @@
             <div class="card mt-5">
                 <div class="card-body">
                     <form id="projectForm" @submit.prevent="checkForm">
-                        <p>
-                            <label class="mr-2" for="name">Project Name</label>
-                            <input required type="text" name="name" id="name" v-model="name">
-                        </p>
-                        <p>
-                            <label class="mr-2" for="start">Start Date</label>
-                            <input required type="date" name="start" id="start" v-model="start">
-                        </p>
-                        <p>
-                            <label class="mr-2" for="end">End Date</label>
-                            <input required type="date" name="end" id="end" v-model="end">
-                        </p>
+                        <div class="text-left">
+                            <p>
+                                <label class="mb-0" for="name"><b>Project Name</b></label>
+                            </p>
+                            <p class="mb-4">
+                                <input required style="width:100%" type="text" name="name" id="name" v-model="name">
+                            </p>
+                            <p>
+                                <label class="mb-0" for="desc"><b>Project Description</b></label>
+                            </p>
+                            <p class="mb-4">
+                                <textarea required style="width:100%" name="desc" id="desc" v-model="desc" placeholder="Description"></textarea>
+                            </p>
+                            <p>
+                                <label class="mb-0" for="start"><b>Start Date</b></label>
+                            </p>
+                            <p class="mb-4">
+                                <input required type="date" name="start" id="start" v-model="start">
+                            </p>
+                            <p>
+                                <label class="mb-0" for="end"><b>End Date</b></label>
+                            </p>
+                            <p>
+                                <input required type="date" name="end" id="end" v-model="end">
+                            </p>
+                        </div>
                         <p>
                             <input class="btn btn-outline-success mt-4" type="submit" value="Submit">
                         </p>
@@ -46,6 +60,7 @@ export default {
     data() {
         return {
             name: null,
+            desc: null,
             start: null,
             end: null,
             token: localStorage.getItem('user-token')
@@ -64,6 +79,7 @@ export default {
       }
       axios.post(baseUrl + 'api/projects/', {
           name: this.name,
+          description: this.desc,
           start_date: this.start,
           end_date: this.end
       },
@@ -71,7 +87,10 @@ export default {
           headers: headers
       })
       .then(res => {
-
+          this.name = '';
+          this.desc = '';
+          this.start = null;
+          this.end = null;
       })
       .catch(res => (console.log(res)));
     }
