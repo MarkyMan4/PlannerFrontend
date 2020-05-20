@@ -1,17 +1,20 @@
 <template>
   <div>
     <div class="text-center">
-      <h1>Active Projects</h1>
+      <h1 class="mb-3">Projects</h1>
+      <toggle-button @change="getProjects()"
+                     :value="true"
+                     :labels="{checked: 'Active', unchecked: 'Inactive'}"
+                     :width="100"
+                     :font-size="18"/>
       <hr>
     </div>
     <div class="row mt-5 ml-5 text-left">
       <div class="col-md-5 ml-5">
-        <div class="card" v-for="proj in projects" :key="proj.id">
-          <button class="btn btn-block btn-outline-secondary text-left" v-on:click="projectDetails(proj)">
-            <h4>
-              {{ proj.name }}
-            </h4>
-          </button>
+        <div id="projCard" v-on:click="projectDetails(proj)" class="shadow rounded mb-2" v-for="proj in projects" :key="proj.id">
+          <h4>
+            {{ proj.name }}
+          </h4>
         </div>
       </div>
       <div class="col-md ml-5">
@@ -20,6 +23,19 @@
     </div>
   </div>
 </template>
+
+<style>
+  #projCard {
+    padding: 15px;
+    background-color: #ffffff;
+  }
+
+  #projCard:hover {
+    background-color: #5a5a5a;
+    color: #ffffff;
+    cursor: pointer;
+  }
+</style>
 
 <script>
 // @ is an alias to /src
@@ -36,7 +52,8 @@ export default {
       projects : [],
       projDetail: null,
       peopleOnProj: null,
-      token: localStorage.getItem('user-token')
+      token: localStorage.getItem('user-token'),
+      viewingActive: true
     }
   },
   methods: {
@@ -46,10 +63,12 @@ export default {
       if(window.location.hostname == "localhost") {
         baseUrl = "http://localhost:8000/";
       }
+
+      var active_param = String(this.viewingActive);
       
       axios.get(baseUrl + "api/projects/", {
         params: {
-          active: "true"
+          active: active_param
         },
         headers: {
           'Authorization': 'Token ' + this.token
@@ -57,6 +76,8 @@ export default {
       })
       .then(res => {
         this.projects = res.data;
+        this.viewingActive = !this.viewingActive;
+        this.projDetail = null
       })
       .catch(err => console.log(err));
     },

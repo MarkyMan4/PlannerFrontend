@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar-custom btn btn-light">
+    <div class="navbar-custom shadow">
         <nav class="nav">
             <router-link class="btn btn-square btn-outline-success navbar-text" to="/">Home</router-link>
             <router-link class="btn btn-square btn-outline-success navbar-text" to="/dashboard">Dashboard</router-link>
@@ -28,7 +28,7 @@
         font-size: 14pt;
     } 
     .btn.btn-square {
-       /* border-radius: 0; */
+       border-radius: 0;
        border: 0px;
     }
 </style>

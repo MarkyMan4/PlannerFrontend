@@ -28,6 +28,7 @@ export default {
 
 html {
   background-color: #F3F3F3;
+  min-height: 950px;
 }
 
 #app {
@@ -36,6 +37,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #F3F3F3;
+  overflow: hidden;
 }
 
 #nav {

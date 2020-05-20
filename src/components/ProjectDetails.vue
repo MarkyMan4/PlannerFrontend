@@ -15,7 +15,7 @@
         </li>
       </ul>
       <br>
-      <button v-if="projDetail.active == true" v-on:click="deactivateProject(projDetail)" class="btn btn-danger">Deactivate</button>
+      <button v-if="projDetail.active == true" v-on:click="deactivateProject(projDetail)" class="btn btn-danger mb-5">Deactivate</button>
   </div>
   <div v-else>
       <h3>Select a project</h3>
