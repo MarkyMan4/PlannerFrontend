@@ -1,5 +1,5 @@
 <template>
-  <div v-if="token!=null">
+  <div class="page" v-if="token!=null">
     <h1 class="text-center">All Projects Timeline</h1>
     <div class="row">
       <div class="col-md-1"></div>

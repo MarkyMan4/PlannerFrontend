@@ -1,5 +1,5 @@
 <template>
-  <div v-if="token!=null">
+  <div class="page" v-if="token!=null">
     <h1>Enter New Project</h1>
     <div class="row">
         <div class="col-md"></div>

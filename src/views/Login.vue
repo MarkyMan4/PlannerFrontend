@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <h1>Login</h1>
     <div class="row">
         <div class="col-md"></div>
