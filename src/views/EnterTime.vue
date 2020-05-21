@@ -3,8 +3,8 @@
     <h1>Enter Time On Project</h1>
     <div class="row">
         <div class="col-md"></div>
-        <div class="col-md">
-            <div class="card mt-5 ml-5 mr-5">
+        <div class="col-md mb-5">
+            <div class="card mt-5 ml-5 mr-5 shadow">
                 <div class="card-body">
                     <form id="timeForm" @submit.prevent="checkForm">
                       <div class="text-left">
@@ -26,7 +26,7 @@
                         </p>
                       </div>
                         <p>
-                          <input class="btn btn-outline-success mt-4" type="submit" value="Submit">
+                          <input class="btn btn-outline-success mt-4 shadow" type="submit" value="Submit">
                         </p>
                     </form>
                 </div>

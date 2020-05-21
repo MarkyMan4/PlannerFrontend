@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <nav class="navbar-custom navbar-expand-md bg-dark navbar-dark shadow">
+        <nav class="navbar-custom navbar-expand-md bg-dark navbar-dark shadow mb-0">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarToggle" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -1,5 +1,5 @@
 <template>
-    <div class="card mt-5">
+    <div class="card mt-5 shadow">
         <div class="card-body">
             <form id="projectForm" @submit.prevent="checkForm">
                 <div class="text-left">
@@ -29,8 +29,8 @@
                     </p>
                 </div>
                 <p>
-                    <input v-if="this.editing" class="btn btn-outline-success mt-4" type="submit" value="Save">
-                    <input v-else class="btn btn-outline-success mt-4" type="submit" value="Submit">
+                    <input v-if="this.editing" class="btn btn-outline-success mt-4 shadow" type="submit" value="Save">
+                    <input v-else class="btn btn-outline-success mt-4 shadow" type="submit" value="Submit">
                 </p>
             </form>
         </div>

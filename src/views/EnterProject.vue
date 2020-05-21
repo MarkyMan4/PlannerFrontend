@@ -3,7 +3,7 @@
         <h1>Enter New Project</h1>
         <div class="row">
             <div class="col-md"></div>
-            <div class="col-md">
+            <div class="col-md mb-5">
                 <ProjectForm/>
             </div>
             <div class="col-md"></div>
