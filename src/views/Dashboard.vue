@@ -113,7 +113,6 @@ export default {
               this.peopleOnProjects.push(col);
             }
           }
-          console.log(this.peopleOnProjects);
         });
       }
     },
