@@ -2,24 +2,26 @@
   <div>
     <div class="text-center">
       <h1 class="mb-3">Projects</h1>
-      <toggle-button @change="getProjects()"
+      <toggle-button @change="getProjects(flipActive())"
                      :value="true"
                      :labels="{checked: 'Active', unchecked: 'Inactive'}"
                      :width="100"
                      :font-size="18"/>
       <hr>
     </div>
-    <div class="row mt-5 ml-5 text-left">
-      <div class="col-md-5 ml-5">
-        <div id="projCard" v-on:click="projectDetails(proj)" class="shadow rounded mb-2" v-for="proj in projects" :key="proj.id">
-          <h4>
-            {{ proj.name }}
-          </h4>
+    <div class="row mt-5 text-left">
+      <div class="col-md-1"></div>
+        <div class="col-md-5 mb-5">
+          <div id="projCard" v-on:click="projectDetails(proj)" class="shadow rounded mb-2" v-for="proj in projects" :key="proj.id">
+            <h4>
+              {{ proj.name }}
+            </h4>
+          </div>
         </div>
-      </div>
-      <div class="col-md ml-5">
-        <ProjectDetails v-bind:projDetail="projDetail" v-bind:peopleOnProj="peopleOnProj"/>
-      </div>
+        <div class="col-md ml-5">
+          <ProjectDetails v-bind:projDetail="projDetail" v-bind:peopleOnProj="peopleOnProj" @refreshData="getProjects(true)"/>
+        </div>
+      <div class="col-md-1"></div>
     </div>
   </div>
 </template>
@@ -57,14 +59,14 @@ export default {
     }
   },
   methods: {
-    getProjects() {
+    getProjects(active) {
       var baseUrl = "https://planner-backend-api.herokuapp.com/";
 
       if(window.location.hostname == "localhost") {
         baseUrl = "http://localhost:8000/";
       }
 
-      var active_param = String(this.viewingActive);
+      var active_param = String(active);
       
       axios.get(baseUrl + "api/projects/", {
         params: {
@@ -76,7 +78,6 @@ export default {
       })
       .then(res => {
         this.projects = res.data;
-        this.viewingActive = !this.viewingActive;
         this.projDetail = null
       })
       .catch(err => console.log(err));
@@ -102,10 +103,14 @@ export default {
         this.peopleOnProj = res.data;
       })
       .catch(err => console.log(err));
+    },
+    flipActive() {
+      this.viewingActive = !this.viewingActive;
+      return this.viewingActive;
     }
   },
   created() {
-    this.getProjects();
+    this.getProjects(true);
   }
 }
 </script>

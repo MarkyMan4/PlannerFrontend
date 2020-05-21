@@ -1,14 +1,19 @@
 <template>
-    <div class="navbar-custom shadow">
-        <nav class="nav">
-            <router-link class="btn btn-square btn-outline-success navbar-text" to="/">Home</router-link>
-            <router-link class="btn btn-square btn-outline-success navbar-text" to="/dashboard">Dashboard</router-link>
-            <router-link class="btn btn-square btn-outline-success navbar-text" to="/enterproject">Enter Project</router-link>
-            <router-link class="btn btn-square btn-outline-success navbar-text" to="/entertime">Enter Time On Project</router-link>
-            <router-link class="btn btn-square btn-outline-success navbar-text" v-if="token==null" to="/login">Login</router-link>
-            <form v-if="token!=null" id="logoutForm" @submit="logout">
-                <input class="btn btn-square btn-outline-success navbar-text" type="submit" value="Logout">
-            </form>
+    <div class="">
+        <nav class="navbar-custom navbar-expand-md bg-dark navbar-dark shadow">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarToggle" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <router-link class="btn btn-square btn-outline-secondary navbar-text" to="/">Home</router-link>
+                <router-link class="btn btn-square btn-outline-secondary navbar-text" to="/dashboard">Dashboard</router-link>
+                <router-link class="btn btn-square btn-outline-secondary navbar-text" to="/enterproject">Enter Project</router-link>
+                <router-link class="btn btn-square btn-outline-secondary navbar-text" to="/entertime">Enter Time On Project</router-link>
+                <router-link class="btn btn-square btn-outline-secondary navbar-text" v-if="token==null" to="/login">Login</router-link>
+                <form v-if="token!=null" id="logoutForm" @submit="logout">
+                    <input class="btn btn-square btn-outline-secondary navbar-text" type="submit" value="Logout">
+                </form>
+            </div>
         </nav>
     </div>
 </template>
@@ -25,11 +30,18 @@
     .navbar-custom .navbar-text { 
         color: rgb(0, 0, 0); 
         padding: 15px;
-        font-size: 14pt;
+        font-size: 12pt;
     } 
     .btn.btn-square {
+       color: rgb(224, 224, 224) !important;
        border-radius: 0;
        border: 0px;
+       margin: 0px;
+    }
+
+    .btn.btn-square:hover {
+        background-color: rgb(165, 165, 165);
+        color:rgb(0, 0, 0) !important;
     }
 </style>
 

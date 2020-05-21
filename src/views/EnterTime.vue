@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md"></div>
         <div class="col-md">
-            <div class="card mt-5">
+            <div class="card mt-5 ml-5 mr-5">
                 <div class="card-body">
                     <form id="timeForm" @submit.prevent="checkForm">
                       <div class="text-left">
@@ -12,7 +12,7 @@
                           <label class="mb-0" for="name"><b>Project</b></label>
                         </p>
                         <p class="mb-4">
-                          <select required name="project" id="project" v-model="projId">
+                          <select required name="project" id="project" v-model="projId" style="width:100%">
                             <option v-for="proj in projects" :key="proj.id" :value="proj.id">
                               {{ proj.name }}
                             </option>
@@ -22,7 +22,7 @@
                           <label class="mb-0" for="percent"><b>Percent of Time</b></label>
                         </p>
                         <p>
-                          <input required type="number" id="percent" v-model="percent" placeholder="percent of time">
+                          <input required type="number" id="percent" v-model="percent" placeholder="percent of time" style="width:50%">
                         </p>
                       </div>
                         <p>
