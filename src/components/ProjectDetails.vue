@@ -1,15 +1,15 @@
 <template>
   <div v-if="projDetail != null">
-        <h3>{{ projDetail.name }}</h3>
+        <h2>{{ projDetail.name }}</h2>
         <div v-if="!this.editing">
           <hr>
-          <h5><b>Description</b></h5>
+          <h3><b>Description</b></h3>
           <p>{{ projDetail.description }}</p>
-          <h5><b>Start Date</b></h5>
+          <h3><b>Start Date</b></h3>
           <p>{{ projDetail.start_date }}</p>
-          <h5><b>End Date</b></h5>
+          <h3><b>End Date</b></h3>
           <p>{{ projDetail.end_date }}</p>
-          <h5><b>People Working On This</b></h5>
+          <h3><b>People Working On This</b></h3>
           <ul>
             <li v-for="person in peopleOnProj" :key="person.user">
                 {{ person.user }} - {{ person.percent_allocated }}%
@@ -30,6 +30,32 @@
       <h3>Select a project</h3>
   </div>
 </template>
+
+<style>
+
+  .btn.btn-outline-success {
+    background: #ffffff;
+    border-color: #5cb85c;
+  }
+
+  .btn.btn-outline-success:hover {
+    background: #5cb85c;
+  }
+
+  .btn.btn-outline-danger {
+    background: #ffffff;
+    border-color: #d9534f;
+  }
+
+  .btn.btn-outline-danger:hover {
+    background: #d9534f;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+</style>
 
 <script>
 // @ is an alias to /src

@@ -37,6 +37,10 @@
     color: #ffffff;
     cursor: pointer;
   }
+
+  hr {
+    border-color: rgb(180, 180, 180) !important;
+  }
 </style>
 
 <script>
